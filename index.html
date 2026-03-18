@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BudgetFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark">
+    <header>
+        <h1>💼 BudgetFlow</h1>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">🌗</button>
+    </header>
+    <main>
+
+        <div class="sub-sec">
+            <div class="income">
+                <div>
+                    <h2>Income</h2>
+                    <div class="amount">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="income-input" placeholder="Enter your income">
+                    </div>
+
+                    <div class="disc">
+                        <label for="description">Description</label>
+                        <input type="text" id="income-description" placeholder="Description (optional)">
+                    </div>
+
+                    <button type="submit" id="add-income">Add Income</button>
+                </div>
+            </div>
+
+
+
+            <div class="expenses">
+                <div>
+                    <h2>Expenses</h2>
+                    <div class="amount">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="expense-input" placeholder="Enter your expense">
+                    </div>
+
+                    <div class="disc">
+                        <label for="description">Description</label>
+                        <input type="text" id="expense-description" placeholder="Description (optional)">
+                    </div>
+
+                    <div class="category">
+                        <label for="category">Category</label>
+                        <select name="category" id="expense-category">
+                            <option value="">Select Category</option>
+                            <option value="Food">Food</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="add-expense">Add Expense</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="table">
+
+            <!-- <h2>Income and Expense Table</h2> -->
+
+            <div class="income-table">
+                <h3>Income</h3>
+                <table id="income-table">
+
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Modify</th>
+                        </tr>
+                    </thead>
+                    <tbody id="income-list">
+
+
+                    </tbody>
+
+                    <tbody id="income-total">
+                        <tr>
+                            <td>Total Income</td>
+                            <td id="total-income">0</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="expense-table">
+                <h3>Expenses</h3>
+
+                <table id="expense-table">
+
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                            <th>modify</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="expense-list">
+
+                    </tbody>
+
+                    <tbody id="expense-total">
+
+                        <tr>
+                            <td>Total Expenses</td>
+                            <td id="total-expense">0</td>
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+            </div>
+
+        </div>
+        <div class="balance-display">
+            <div class="balance-card">
+                <div class="balance-label">Total Balance</div>
+                <div class="balance-amount" id="balance-amount">$0.00</div>
+            </div>
+        </div>
+
+
+        <div class="category-balance">
+
+            <h2>Total spent on a Category</h2>
+            <label for="category">Select Category</label>
+            <select name="category" id="category-total">
+                <option value="">Select Category</option>
+                <option value="Food">Food</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Other">Other</option>
+            </select>
+
+
+
+            <button type="submit" id="get-total">Get Total</button>
+
+
+            <h3><span id="category-total-amount"></h3>
+        </div>
+
+        </div>
+
+        </section>
+
+
+    </main>
+    <footer>
+        <p>&copy; 2026 BudgetFlow. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+            localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        if (savedTheme === "light") {
+            document.body.classList.remove("dark");
+        }
+    </script>
+</body>
+
+</html>
